@@ -1,52 +1,174 @@
-<!-- FOOTER -->
-    <footer class="bg-black py-12 border-t border-white/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
-            
-            <div class="flex items-center gap-3">
-                <span class="heading-font font-extrabold text-lg text-ilu-blue">LAB ILÛ</span>
-                <span class="text-xs text-ilu-offwhite/40">© 2026 — Memória Ancestral & Inovação Futurista</span>
-            </div>
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth dark">
 
-            <div class="sub-font text-xs uppercase tracking-widest text-ilu-offwhite/50 flex gap-6">
-                <a href="index.html" class="hover:text-ilu-blue transition-colors">Casa</a>
-                <a href="ces-sao-fi-de-quem.html" class="hover:text-ilu-blue transition-colors">Cês são fi de quem?</a>
-                <a href="tecnologias.html" class="hover:text-ilu-blue transition-colors">Tecnologias</a>
-                <a href="trabalhos.html" class="hover:text-ilu-blue transition-colors">Trabalhos</a>
-                <a href="fala-tu.html" class="hover:text-ilu-blue transition-colors">Fala tu</a>
-            </div>
-
-        </div>
-    </footer>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabalhos — Lab Ilû</title>
+    <meta name="description" content="Lab Ilû — comunicação, cultura negra, tecnologia e afrofuturismo.">
+    <link rel="stylesheet" href="assets/ilu.css">
     
-    <script src="assets/ilu.js" defer></script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Space+Grotesk:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <!-- Script do Visualizador de Marcas -->
     <script>
-        function openBrandViewer(filePath, title) {
-            const modal = document.getElementById('brand-viewer-modal');
-            const iframe = document.getElementById('brand-viewer-iframe');
-            const titleEl = document.getElementById('brand-viewer-title');
-
-            if (modal && iframe) {
-                iframe.src = filePath;
-                if (titleEl) titleEl.textContent = title;
-                modal.classList.remove('hidden');
-                modal.classList.add('flex');
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function closeBrandViewer() {
-            const modal = document.getElementById('brand-viewer-modal');
-            const iframe = document.getElementById('brand-viewer-iframe');
-
-            if (modal && iframe) {
-                iframe.src = '';
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-                document.body.style.overflow = '';
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        ilu: {
+                            blue: '#0d00ff',
+                            bright: '#281eff',
+                            dark: '#050072',
+                            bg: '#0a0a0c',
+                            card: '#121216',
+                            offwhite: '#f4f1ea',
+                            accent: '#ff3e14'
+                        }
+                    },
+                    fontFamily: {
+                        syne: ['Syne', 'sans-serif'],
+                        space: ['Space Grotesk', 'sans-serif'],
+                        body: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
             }
         }
     </script>
-</body>
-</html>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0a0a0c;
+            color: #f4f1ea;
+            overflow-x: hidden;
+        }
+        .heading-font { font-family: 'Syne', sans-serif; }
+        .sub-font { font-family: 'Space Grotesk', sans-serif; }
+        .bg-noise {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+        }
+        .text-stroke-white {
+            -webkit-text-stroke: 1.5px #f4f1ea;
+            color: transparent;
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0c; }
+        ::-webkit-scrollbar-thumb { background: #0d00ff; border-radius: 4px; }
+    </style>
+</head>
+
+<body class="bg-ilu-bg text-ilu-offwhite bg-noise antialiased selection:bg-ilu-blue selection:text-white">
+    <!-- HEADER -->
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 backdrop-blur-md bg-ilu-bg/80 border-b border-white/10" id="main-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center group gap-2" aria-label="Lab Ilû Home">
+                <div class="h-10 text-ilu-blue group-hover:scale-105 transition-transform duration-300">
+                    <svg class="h-full w-auto" viewBox="0 0 430 200" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 12 42 C 18 36, 72 36, 78 42 C 86 50, 92 68, 88 88 C 84 108, 70 120, 72 135 C 74 150, 78 170, 70 188 C 64 198, 26 198, 20 188 C 12 170, 16 150, 18 135 C 20 120, 6 108, 2 88 C -2 68, 4 50, 12 42 Z" />
+                        <ellipse cx="45" cy="42" rx="34" ry="14" fill="#000" stroke="currentColor" stroke-width="4"/>
+                        <circle cx="45" cy="42" r="28" fill="currentColor" opacity="0.3"/>
+                        <path d="M 100 50 L 140 50 L 140 140 L 195 140 C 208 140, 208 185, 195 185 L 100 185 Z" />
+                        <path d="M 220 50 L 260 50 L 260 135 C 260 155, 280 155, 280 135 L 280 50 L 320 50 L 320 138 C 320 180, 220 180, 220 138 Z" />
+                        <polygon points="270,10 290,26 270,42 250,26" />
+                        <text x="335" y="90" font-family="'Syne', sans-serif" font-weight="800" font-size="48" letter-spacing="-2">L</text>
+                        <text x="335" y="135" font-family="'Syne', sans-serif" font-weight="800" font-size="48" letter-spacing="-2">A</text>
+                        <text x="335" y="180" font-family="'Syne', sans-serif" font-weight="800" font-size="48" letter-spacing="-2">B</text>
+                    </svg>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center space-x-8 sub-font text-sm uppercase tracking-wider font-semibold">
+                <a href="index.html" class="hover:text-ilu-blue transition-colors">Casa</a>
+                <a href="ces-sao-fi-de-quem.html" class="hover:text-ilu-blue transition-colors">Cês são fi de quem?</a>
+                <a href="tecnologias.html" class="hover:text-ilu-blue transition-colors">Tecnologias</a>
+                <a href="trabalhos.html" class="hover:text-ilu-blue transition-colors text-ilu-blue">Trabalhos</a>
+                <a href="fala-tu.html" class="hover:text-ilu-blue transition-colors">Fala tu</a>
+            </nav>
+
+            <div class="hidden lg:flex items-center">
+                <a href="fala-tu.html" class="sub-font bg-ilu-blue hover:bg-ilu-bright text-white px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all">
+                    <span>Conectar Rede</span> <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+                </a>
+            </div>
+
+            <button id="mobile-menu-btn" class="md:hidden text-2xl text-ilu-offwhite p-2">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-ilu-bg/95 border-b border-white/10 px-6 py-8">
+            <nav class="flex flex-col space-y-6 sub-font text-lg uppercase tracking-wider font-bold">
+                <a href="index.html" class="hover:text-ilu-blue">Casa</a>
+                <a href="ces-sao-fi-de-quem.html" class="hover:text-ilu-blue">Cês são fi de quem?</a>
+                <a href="tecnologias.html" class="hover:text-ilu-blue">Tecnologias</a>
+                <a href="trabalhos.html" class="hover:text-ilu-blue">Trabalhos</a>
+                <a href="fala-tu.html" class="hover:text-ilu-blue">Fala tu</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="relative pt-20 page-enter">
+        <section id="trabalhos" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="max-w-3xl mb-14">
+                <span class="text-ilu-blue sub-font text-xs uppercase tracking-widest font-bold">Trabalhos — Mostra & Portfólio</span>
+                <h1 class="heading-font text-4xl sm:text-6xl font-extrabold uppercase mt-3 leading-tight">Ideias que viram <span class="text-ilu-blue">estrutura.</span></h1>
+                <p class="text-ilu-offwhite/70 mt-5 max-w-2xl leading-relaxed">Sites, mídia, automações e aplicativos que conectam estratégia, cultura e tecnologia. Uma seleção de projetos e contribuições da agência.</p>
+            </div>
+
+            <div class="mb-5 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+                <div>
+                    <span class="text-ilu-blue sub-font text-xs uppercase tracking-widest font-bold">01 / Frentes principais</span>
+                    <h2 class="heading-font text-2xl sm:text-3xl font-extrabold uppercase mt-2">Quatro tecnologias de criação</h2>
+                </div>
+                <a class="portfolio-link" href="tecnologias.html">Conheça os serviços <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <div class="portfolio-real-grid">
+                <article class="portfolio-real-card">
+                    <div class="portfolio-symbol"><i class="fa-solid fa-code"></i></div>
+                    <span class="portfolio-tag">Web design & desenvolvimento</span>
+                    <h2>Criação de sites</h2>
+                    <p>Sites e experiências digitais com atenção à identidade visual, responsividade, desempenho e autonomia de quem administra o conteúdo.</p>
+                    <a class="portfolio-link" href="#sites">Ver sites listados <i class="fa-solid fa-arrow-down"></i></a>
+                </article>
+                <article class="portfolio-real-card portfolio-placeholder-orange">
+                    <div class="portfolio-symbol"><i class="fa-solid fa-chart-line"></i></div>
+                    <span class="portfolio-tag">Aquisição & performance</span>
+                    <h2>Tráfego pago</h2>
+                    <p>Estratégia e operação de mídia paga, com campanhas em plataformas como Google Ads e Meta Ads, acompanhamento de conversões e leitura de indicadores.</p>
+                    <a class="portfolio-link" href="fala-tu.html">Conversar sobre mídia <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </article>
+                <article class="portfolio-real-card">
+                    <div class="portfolio-symbol"><i class="fa-solid fa-diagram-project"></i></div>
+                    <span class="portfolio-tag">Integração & fluxo</span>
+                    <h2>Automações</h2>
+                    <p>Fluxos de atendimento e relacionamento com WhatsApp, APIs e ferramentas de integração, desenhados para reduzir tarefas manuais e conectar sistemas.</p>
+                    <a class="portfolio-link" href="https://github.com/JuuCorreaa" target="_blank" rel="noopener noreferrer">Explorar GitHub <i class="fa-brands fa-github"></i></a>
+                </article>
+                <article class="portfolio-real-card portfolio-placeholder-photo">
+                    <div class="portfolio-symbol"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                    <span class="portfolio-tag">Produto digital & MVP</span>
+                    <h2>Aplicativos e plataformas</h2>
+                    <p>Desenvolvimento de soluções digitais para gestão, monitoramento, indicadores de impacto e experiências de participação.</p>
+                    <a class="portfolio-link" href="https://clubedogrito.institutoogrito.com.br/" target="_blank" rel="noopener noreferrer">Conhecer Clube do Grito <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </article>
+            </div>
+
+            <!-- SITES -->
+            <div id="sites" class="mt-20 pt-10 border-t border-white/10">
+                <span class="text-ilu-blue sub-font text-xs uppercase tracking-widest font-bold">02 / Sites feitos ou com contribuição</span>
+                <h2 class="heading-font text-3xl sm:text-4xl font-extrabold uppercase mt-3 mb-4">Presença digital <span class="text-stroke-white">em movimento.</span></h2>
+                <p class="text-ilu-offwhite/65 text-sm leading-relaxed max-w-2xl mb-8">Uma seleção de sites realizados ou que receberam contribuição da agência. O escopo específico variou de projeto para projeto.</p>
+                <div class="site-link-grid">
+                    <a class="site-link" href="https://institutoogrito.org/" target="_blank" rel="noopener noreferrer"><span>Instituto O Grito</span><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <a class="site-link" href="
