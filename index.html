@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth dark">
-
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Casa — Lab Ilû</title>
@@ -107,13 +107,14 @@
             border-radius: 4px;
         }
     </style>
+</head>
 
 <body class="bg-ilu-bg text-ilu-offwhite bg-noise antialiased selection:bg-ilu-blue selection:text-white">
     <!-- HEADER / NAVIGATION -->
     <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 backdrop-blur-md bg-ilu-bg/80 border-b border-white/10" id="main-header">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             
-            <!-- LOGO SVG FIEL Á IMAGEM DO USUÁRIO -->
+            <!-- LOGO SVG -->
             <a href="index.html" class="flex items-center group gap-2" aria-label="Lab Ilû Home">
                 <div class="h-10 text-ilu-blue group-hover:scale-105 transition-transform duration-300">
                     <svg class="h-full w-auto" viewBox="0 0 430 200" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -136,9 +137,9 @@
                 </div>
             </a>
 
-            <!-- NAV LINKS DESKTOP (MENU SOLICITADO) -->
+            <!-- NAV LINKS DESKTOP -->
             <nav class="hidden md:flex items-center space-x-8 sub-font text-sm uppercase tracking-wider font-semibold">
-                <a href="index.html" class="hover:text-ilu-blue transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-ilu-blue hover:after:w-full after:transition-all">Casa</a>
+                <a href="index.html" class="text-ilu-blue relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-ilu-blue">Casa</a>
                 <a href="ces-sao-fi-de-quem.html" class="hover:text-ilu-blue transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-ilu-blue hover:after:w-full after:transition-all">Cês são fi de quem?</a>
                 <a href="tecnologias.html" class="hover:text-ilu-blue transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-ilu-blue hover:after:w-full after:transition-all">Tecnologias</a>
                 <a href="trabalhos.html" class="hover:text-ilu-blue transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-ilu-blue hover:after:w-full after:transition-all">Trabalhos</a>
@@ -171,8 +172,9 @@
             </nav>
         </div>
     </header>
+
 <main class="relative pt-20 page-enter">
-<section id="casa" class="min-h-[90vh] flex items-center justify-center relative overflow-hidden py-20 px-4">
+    <section id="casa" class="min-h-[90vh] flex items-center justify-center relative overflow-hidden py-20 px-4">
             
             <!-- Glow background decorativo -->
             <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-ilu-blue/20 rounded-full blur-[120px] pointer-events-none animate-pulse-slow"></div>
@@ -199,15 +201,15 @@
                     Nossos ancestrais já dominavam o tempo, as estrelas e a tecnologia da palavra muito antes de qualquer máquina existir. Nós não estamos apenas sonhando com o futuro; estamos usando os portais do passado para reescrever o presente.
                 </p>
 
-                <!-- Ações e CTA -->
+                <!-- Ações e CTA (LINKS CORRIGIDOS) -->
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-                    <a href="#fala-tu" class="w-full sm:w-auto sub-font bg-ilu-blue hover:bg-ilu-bright text-white px-8 py-4 rounded-xl text-sm font-bold uppercase tracking-wider transition-all duration-300 transform hover:-translate-y-1 glow-klein flex items-center justify-center gap-3">
+                    <a href="fala-tu.html" class="w-full sm:w-auto sub-font bg-ilu-blue hover:bg-ilu-bright text-white px-8 py-4 rounded-xl text-sm font-bold uppercase tracking-wider transition-all duration-300 transform hover:-translate-y-1 glow-klein flex items-center justify-center gap-3">
                         <span>Reescrever o Presente</span>
                         <i class="fa-solid fa-bolt"></i>
                     </a>
-                    <a href="#ces-sao-fi-de-quem" class="w-full sm:w-auto sub-font border border-white/20 hover:border-ilu-blue px-8 py-4 rounded-xl text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:bg-white/5 flex items-center justify-center gap-2">
+                    <a href="ces-sao-fi-de-quem.html" class="w-full sm:w-auto sub-font border border-white/20 hover:border-ilu-blue px-8 py-4 rounded-xl text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:bg-white/5 flex items-center justify-center gap-2">
                         <span>Conhecer o Laboratório</span>
-                        <i class="fa-solid fa-arrow-down"></i>
+                        <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
 
@@ -232,28 +234,30 @@
                 </div>
 
             </div>
-        </section>
-<!-- BANNER DE MARQUEE CONTINUA -->
-        <div class="py-4 bg-ilu-blue text-white overflow-hidden uppercase font-black sub-font text-sm tracking-widest whitespace-nowrap rotate-1 my-10 border-y border-white/20">
-            <div class="inline-flex space-x-8 animate-[spin-slow_20s_linear_infinite]" style="animation: marquee 25s linear infinite;">
-                <span>✦ Autonomia Digital</span>
-                <span>✦ Comunicação Ancestral</span>
-                <span>✦ Design Editorial Contemporâneo</span>
-                <span>✦ Afrofuturismo Urbano</span>
-                <span>✦ Tecnologia de Rede</span>
-                <span>✦ Branding & Estratégia</span>
-                <span>✦ Autonomia Digital</span>
-                <span>✦ Comunicação Ancestral</span>
-            </div>
-        </div>
+    </section>
 
-        <style>
-            @keyframes marquee {
-                0% { transform: translateX(0%); }
-                100% { transform: translateX(-50%); }
-            }
-        </style>
+    <!-- BANNER DE MARQUEE CONTINUA -->
+    <div class="py-4 bg-ilu-blue text-white overflow-hidden uppercase font-black sub-font text-sm tracking-widest whitespace-nowrap rotate-1 my-10 border-y border-white/20">
+        <div class="inline-flex space-x-8 animate-[spin-slow_20s_linear_infinite]" style="animation: marquee 25s linear infinite;">
+            <span>✦ Autonomia Digital</span>
+            <span>✦ Comunicação Ancestral</span>
+            <span>✦ Design Editorial Contemporâneo</span>
+            <span>✦ Afrofuturismo Urbano</span>
+            <span>✦ Tecnologia de Rede</span>
+            <span>✦ Branding & Estratégia</span>
+            <span>✦ Autonomia Digital</span>
+            <span>✦ Comunicação Ancestral</span>
+        </div>
+    </div>
+
+    <style>
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+    </style>
 </main>
+
     <!-- FOOTER -->
     <footer class="bg-black py-12 border-t border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
