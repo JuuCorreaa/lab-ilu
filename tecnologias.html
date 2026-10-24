@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth dark">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecnologias — Lab Ilû</title>
+    <meta name="description" content="Lab Ilû — comunicação, cultura negra, tecnologia e afrofuturismo.">
+    <link rel="stylesheet" href="assets/ilu.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Syne (Header/Display) + Space Grotesk (Subtitles) + Plus Jakarta Sans (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Space+Grotesk:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome / Lucide Icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        ilu: {
+                            blue: '#0d00ff',     /* Azul Klein Vibrante extraído da logo */
+                            bright: '#281eff',
+                            dark: '#050072',
+                            bg: '#0a0a0c',       /* Fundo escuro grafite/preto */
+                            card: '#121216',     /* Cards escuros */
+                            offwhite: '#f4f1ea', /* Texto e detalhes off-white ancestral */
+                            accent: '#ff3e14'    /* Toque de contraste caloroso */
+                        }
+                    },
+                    fontFamily: {
+                        syne: ['Syne', 'sans-serif'],
+                        space: ['Space Grotesk', 'sans-serif'],
+                        body: ['Plus Jakarta Sans', 'sans-serif']
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'spin-slow': 'spin 12s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0a0a0c;
+            color: #f4f1ea;
+            overflow-x: hidden;
+        }
+
+        .heading-font {
+            font-family: 'Syne', sans-serif;
+        }
+
+        .sub-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Efeito de Textura Noise Ancestral */
+        .bg-noise {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+        }
+
+        /* Efeito de Borda Neon e Brilho Klein */
+        .glow-klein {
+            box-shadow: 0 0 35px -5px rgba(13, 0, 255, 0.5);
+        }
+
+        .glow-klein-lg {
+            box-shadow: 0 0 70px 10px rgba(13, 0, 255, 0.35);
+        }
+
+        .text-stroke-blue {
+            -webkit-text-stroke: 1.5px #0d00ff;
+            color: transparent;
+        }
+
+        .text-stroke-white {
+            -webkit-text-stroke: 1.5px #f4f1ea;
+            color: transparent;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0d00ff;
+            border-radius: 4px;
+        }
+    </style>
+
+<body class="bg-ilu-bg text-ilu-offwhite bg-noise antialiased selection:bg-ilu-blue selection:text-white">
+    <!-- HEADER / NAVIGATION -->
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 backdrop-blur-md bg-ilu-bg/80 border-b border-white/10" id="main-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- LOGO SVG FIEL Á IMAGEM DO USUÁRIO -->
+            <a href="index.html" class="flex items-center group gap-2" aria-label="Lab Ilû Home">
+                <div class="h-10 text-ilu-blue group-hover:scale-105 transition-transform duration-300">
+                    <svg class="h-full w-auto" viewBox="0 0 430 200" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Tambor / Ilû Stylized 'I' -->
+                        <path d="M 12 42 C 18 36, 72 36, 78 42 C 86 50, 92 68, 88 88 C 84 108, 70 120, 72 135 C 74 150, 78 170, 70 188 C 64 198, 26 198, 20 188 C 12 170, 16 150, 18 135 C 20 120, 6 108, 2 88 C -2 68, 4 50, 12 42 Z" />
+                        <ellipse cx="45" cy="42" rx="34" ry="14" fill="#000" stroke="currentColor" stroke-width="4"/>
+                        <circle cx="45" cy="42" r="28" fill="currentColor" opacity="0.3"/>
+                        <!-- Text Body LÚ -->
+                        <!-- L -->
+                        <path d="M 100 50 L 140 50 L 140 140 L 195 140 C 208 140, 208 185, 195 185 L 100 185 Z" />
+                        <!-- Ú -->
+                        <path d="M 220 50 L 260 50 L 260 135 C 260 155, 280 155, 280 135 L 280 50 L 320 50 L 320 138 C 320 180, 220 180, 220 138 Z" />
+                        <!-- Diamond Accent (Acento) -->
+                        <polygon points="270,10 290,26 270,42 250,26" />
+                        <!-- LAB Vertical Stacked -->
+                        <text x="335" y="90" font-family="'Syne', sans-serif" font-weight="800" font-size="48" letter-spacing="-2">L</text>
+                        <text x="335" y="135" font-family="'Syne', sans-serif" font-weight="800" font-size="48" letter-spacing="-2">A</text>
+                        <text x="335" y="180" font-family="'Syne', sans-serif" font-weight="800" font-size="48" letter-spacing="-2">B</text>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- NAV LINKS DESKTOP (MENU SOLICITADO) -->
+            <nav class="hidden md:flex items-center space-x-8 sub-font text-sm uppercase tracking-wider font-semibold">
+                <a href="index.html" class="hover:text-ilu-blue transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-ilu-blue hover:after:w-full after:transition-all">Casa</a>
+                <a href="ces-sao-fi-de-quem.html" class="hover:text-ilu-blue transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-ilu-blue hover:after:w-full after:transition-all">Cês são fi de quem?</a>
+                <a href="tecnologias.html" class="hover:text-ilu-blue transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-ilu-blue hover:after:w-full after:transition-all">Tecnologias</a>
+                <a href="trabalhos.html" class="hover:text-ilu-blue transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-ilu-blue hover:after:w-full after:transition-all">Trabalhos</a>
+                <a href="fala-tu.html" class="hover:text-ilu-blue transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-ilu-blue hover:after:w-full after:transition-all">Fala tu</a>
+            </nav>
+
+            <!-- CTA HEADER -->
+            <div class="hidden lg:flex items-center">
+                <a href="fala-tu.html" class="sub-font bg-ilu-blue hover:bg-ilu-bright text-white px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 transform hover:scale-105 shadow-lg shadow-ilu-blue/30 flex items-center gap-2">
+                    <span>Conectar Rede</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+
+            <!-- MOBILE MENU BUTTON -->
+            <button id="mobile-menu-btn" class="md:hidden text-2xl text-ilu-offwhite focus:outline-none p-2" aria-label="Abrir Menu">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+        </div>
+
+        <!-- MOBILE NAV OVERLAY -->
+        <div id="mobile-menu" class="hidden md:hidden bg-ilu-bg/95 border-b border-white/10 px-6 py-8 backdrop-blur-xl">
+            <nav class="flex flex-col space-y-6 sub-font text-lg uppercase tracking-wider font-bold">
+                <a href="index.html" class="mobile-link hover:text-ilu-blue transition-colors">Casa</a>
+                <a href="ces-sao-fi-de-quem.html" class="mobile-link hover:text-ilu-blue transition-colors">Cês são fi de quem?</a>
+                <a href="tecnologias.html" class="mobile-link hover:text-ilu-blue transition-colors">Tecnologias</a>
+                <a href="trabalhos.html" class="mobile-link hover:text-ilu-blue transition-colors">Trabalhos</a>
+                <a href="fala-tu.html" class="mobile-link hover:text-ilu-blue transition-colors">Fala tu</a>
+                <a href="fala-tu.html" class="mobile-link bg-ilu-blue text-center text-white py-3 rounded-xl mt-4">Iniciar Projeto</a>
+            </nav>
+        </div>
+    </header>
+<main class="relative pt-20 page-enter">
+<section class="py-24 bg-ilu-card/50 border-y border-white/10 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                    <div>
+                        <span class="text-ilu-blue sub-font text-xs uppercase tracking-widest font-bold">Serviços & Modulações</span>
+                        <h2 class="heading-font text-3xl sm:text-5xl font-extrabold uppercase mt-2">Tecnologias de Comunicação</h2>
+                    </div>
+                    <p class="text-ilu-offwhite/70 max-w-md text-sm">
+                        Soluções completas adaptadas da nossa bagagem de mercado para elevar o patamar estético e estratégico do seu projeto.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <article class="p-8 rounded-2xl bg-ilu-bg border border-white/10 hover:border-ilu-blue transition-all duration-300 group hover:-translate-y-2 flex flex-col justify-between"><div><div class="w-14 h-14 rounded-xl bg-ilu-blue/10 border border-ilu-blue/30 text-ilu-blue flex items-center justify-center text-2xl mb-6 group-hover:bg-ilu-blue group-hover:text-white transition-colors"><i class="fa-solid fa-code"></i></div><h3 class="heading-font text-xl font-bold uppercase mb-3">Criação de sites</h3><p class="text-sm text-ilu-offwhite/70 leading-relaxed">Sites institucionais e experiências digitais responsivas, com identidade própria, estrutura clara, atenção a SEO técnico e autonomia de gestão.</p></div><a href="trabalhos.html#sites" class="mt-8 pt-4 border-t border-white/5 flex items-center justify-between text-xs sub-font text-ilu-blue font-bold"><span>PLATAFORMAS DIGITAIS</span><i class="fa-solid fa-arrow-right group-hover:translate-x-2 transition-transform"></i></a></article>
+                    <article class="p-8 rounded-2xl bg-ilu-bg border border-white/10 hover:border-ilu-blue transition-all duration-300 group hover:-translate-y-2 flex flex-col justify-between"><div><div class="w-14 h-14 rounded-xl bg-ilu-blue/10 border border-ilu-blue/30 text-ilu-blue flex items-center justify-center text-2xl mb-6 group-hover:bg-ilu-blue group-hover:text-white transition-colors"><i class="fa-solid fa-chart-line"></i></div><h3 class="heading-font text-xl font-bold uppercase mb-3">Tráfego pago</h3><p class="text-sm text-ilu-offwhite/70 leading-relaxed">Estratégia de mídia, campanhas em Google Ads e Meta Ads, configuração de mensuração e acompanhamento de indicadores de aquisição e conversão.</p></div><a href="trabalhos.html" class="mt-8 pt-4 border-t border-white/5 flex items-center justify-between text-xs sub-font text-ilu-blue font-bold"><span>PERFORMANCE & ALCANCE</span><i class="fa-solid fa-arrow-right group-hover:translate-x-2 transition-transform"></i></a></article>
+                    <article class="p-8 rounded-2xl bg-ilu-bg border border-white/10 hover:border-ilu-blue transition-all duration-300 group hover:-translate-y-2 flex flex-col justify-between"><div><div class="w-14 h-14 rounded-xl bg-ilu-blue/10 border border-ilu-blue/30 text-ilu-blue flex items-center justify-center text-2xl mb-6 group-hover:bg-ilu-blue group-hover:text-white transition-colors"><i class="fa-solid fa-diagram-project"></i></div><h3 class="heading-font text-xl font-bold uppercase mb-3">Automações & integrações</h3><p class="text-sm text-ilu-offwhite/70 leading-relaxed">Fluxos de WhatsApp, APIs e integrações entre ferramentas para organizar atendimento, relacionamento e operações digitais.</p></div><a href="https://github.com/JuuCorreaa" target="_blank" rel="noopener noreferrer" class="mt-8 pt-4 border-t border-white/5 flex items-center justify-between text-xs sub-font text-ilu-blue font-bold"><span>FLUXOS CONECTADOS</span><i class="fa-brands fa-github"></i></a></article>
+                    <article class="p-8 rounded-2xl bg-ilu-bg border border-white/10 hover:border-ilu-blue transition-all duration-300 group hover:-translate-y-2 flex flex-col justify-between"><div><div class="w-14 h-14 rounded-xl bg-ilu-blue/10 border border-ilu-blue/30 text-ilu-blue flex items-center justify-center text-2xl mb-6 group-hover:bg-ilu-blue group-hover:text-white transition-colors"><i class="fa-solid fa-mobile-screen-button"></i></div><h3 class="heading-font text-xl font-bold uppercase mb-3">Aplicativos & MVPs</h3><p class="text-sm text-ilu-offwhite/70 leading-relaxed">Plataformas e produtos digitais para gestão, monitoramento, participação e geração de indicadores de impacto.</p></div><a href="https://clubedogrito.institutoogrito.com.br/" target="_blank" rel="noopener noreferrer" class="mt-8 pt-4 border-t border-white/5 flex items-center justify-between text-xs sub-font text-ilu-blue font-bold"><span>PRODUTO DIGITAL</span><i class="fa-solid fa-arrow-up-right-from-square"></i></a></article>
+                </div>
+
+            </div>
+        </section>
+</main>
+    <!-- FOOTER -->
+    <footer class="bg-black py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            
+            <div class="flex items-center gap-3">
+                <span class="heading-font font-extrabold text-lg text-ilu-blue">LAB ILÛ</span>
+                <span class="text-xs text-ilu-offwhite/40">© 2026 — Memória Ancestral & Inovação Futurista</span>
+            </div>
+
+            <div class="sub-font text-xs uppercase tracking-widest text-ilu-offwhite/50 flex gap-6">
+                <a href="index.html" class="hover:text-ilu-blue transition-colors">Casa</a>
+                <a href="ces-sao-fi-de-quem.html" class="hover:text-ilu-blue transition-colors">Cês são fi de quem?</a>
+                <a href="tecnologias.html" class="hover:text-ilu-blue transition-colors">Tecnologias</a>
+                <a href="trabalhos.html" class="hover:text-ilu-blue transition-colors">Trabalhos</a>
+                <a href="fala-tu.html" class="hover:text-ilu-blue transition-colors">Fala tu</a>
+            </div>
+
+        </div>
+    </footer>
+<script src="assets/ilu.js" defer></script>
+</body>
+</html>
