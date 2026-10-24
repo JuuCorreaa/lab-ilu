@@ -1,397 +1,693 @@
-Aqui tens o código HTML/CSS/JS completo e unificado num único ficheiro, pronto para fazeres o upload na Cloudflare Pages ou guardar como `index.html`:
-
-```html
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lab Ilû | Laboratório de Comunicação e Tecnologia</title>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #050505;
-      color: #ffffff;
-    }
-    h1, h2, h3, h4, .font-heading {
-      font-family: 'Syne', sans-serif;
-    }
-    .text-blue-klein {
-      color: #0d00ff;
-    }
-    .bg-blue-klein {
-      background-color: #0d00ff;
-    }
-    .border-blue-klein {
-      border-color: #0d00ff;
-    }
-    .glow-blue {
-      text-shadow: 0 0 25px rgba(13, 0, 255, 0.7);
-    }
-    .glow-box {
-      box-shadow: 0 0 20px rgba(13, 0, 255, 0.3);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Ilû — Laboratório de Comunicação e Tecnologia Afrofuturista</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Syne (Header/Display) + Space Grotesk (Subtitles) + Plus Jakarta Sans (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Space+Grotesk:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome / Lucide Icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        ilu: {
+                            blue: '#0d00ff',     /* Azul Klein Vibrante extraído da logo */
+                            bright: '#281eff',
+                            dark: '#050072',
+                            bg: '#0a0a0c',       /* Fundo escuro grafite/preto */
+                            card: '#121216',     /* Cards escuros */
+                            offwhite: '#f4f1ea', /* Texto e detalhes off-white ancestral */
+                            accent: '#ff3e14'    /* Toque de contraste caloroso */
+                        }
+                    },
+                    fontFamily: {
+                        syne: ['Syne', 'sans-serif'],
+                        space: ['Space Grotesk', 'sans-serif'],
+                        body: ['Plus Jakarta Sans', 'sans-serif']
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'spin-slow': 'spin 12s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0a0a0c;
+            color: #f4f1ea;
+            overflow-x: hidden;
+        }
+
+        .heading-font {
+            font-family: 'Syne', sans-serif;
+        }
+
+        .sub-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Efeito de Textura Noise Ancestral */
+        .bg-noise {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+        }
+
+        /* Efeito de Borda Neon e Brilho Klein */
+        .glow-klein {
+            box-shadow: 0 0 35px -5px rgba(13, 0, 255, 0.5);
+        }
+
+        .glow-klein-lg {
+            box-shadow: 0 0 70px 10px rgba(13, 0, 255, 0.35);
+        }
+
+        .text-stroke-blue {
+            -webkit-text-stroke: 1.5px #0d00ff;
+            color: transparent;
+        }
+
+        .text-stroke-white {
+            -webkit-text-stroke: 1.5px #f4f1ea;
+            color: transparent;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0d00ff;
+            border-radius: 4px;
+        }
+    </style>
 </head>
-<body class="bg-[#050505] text-white antialiased flex flex-col min-h-screen">
+<body class="bg-ilu-bg text-ilu-offwhite bg-noise antialiased selection:bg-ilu-blue selection:text-white">
 
-  <!-- HEADER / NAVEGAÇÃO -->
-  <header class="fixed top-0 left-0 w-full z-50 bg-[#050505]/90 backdrop-blur-md border-b border-zinc-800/80">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <!-- LOGO -->
-      <a href="#" onclick="showPage('casa')" class="flex items-center gap-2">
-        <span class="font-heading text-2xl font-black text-[#0d00ff] tracking-wider glow-blue">ILÛ LAB</span>
-      </a>
+    <!-- HEADER / NAVIGATION -->
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 backdrop-blur-md bg-ilu-bg/80 border-b border-white/10" id="main-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- LOGO SVG FIEL Á IMAGEM DO USUÁRIO -->
+            <a href="#casa" class="flex items-center group gap-2" aria-label="Lab Ilû Home">
+                <div class="h-10 text-ilu-blue group-hover:scale-105 transition-transform duration-300">
+                    <svg class="h-full w-auto" viewBox="0 0 430 200" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Tambor / Ilû Stylized 'I' -->
+                        <path d="M 12 42 C 18 36, 72 36, 78 42 C 86 50, 92 68, 88 88 C 84 108, 70 120, 72 135 C 74 150, 78 170, 70 188 C 64 198, 26 198, 20 188 C 12 170, 16 150, 18 135 C 20 120, 6 108, 2 88 C -2 68, 4 50, 12 42 Z" />
+                        <ellipse cx="45" cy="42" rx="34" ry="14" fill="#000" stroke="currentColor" stroke-width="4"/>
+                        <circle cx="45" cy="42" r="28" fill="currentColor" opacity="0.3"/>
+                        <!-- Text Body LÚ -->
+                        <!-- L -->
+                        <path d="M 100 50 L 140 50 L 140 140 L 195 140 C 208 140, 208 185, 195 185 L 100 185 Z" />
+                        <!-- Ú -->
+                        <path d="M 220 50 L 260 50 L 260 135 C 260 155, 280 155, 280 135 L 280 50 L 320 50 L 320 138 C 320 180, 220 180, 220 138 Z" />
+                        <!-- Diamond Accent (Acento) -->
+                        <polygon points="270,10 290,26 270,42 250,26" />
+                        <!-- LAB Vertical Stacked -->
+                        <text x="335" y="90" font-family="'Syne', sans-serif" font-weight="800" font-size="48" letter-spacing="-2">L</text>
+                        <text x="335" y="135" font-family="'Syne', sans-serif" font-weight="800" font-size="48" letter-spacing="-2">A</text>
+                        <text x="335" y="180" font-family="'Syne', sans-serif" font-weight="800" font-size="48" letter-spacing="-2">B</text>
+                    </svg>
+                </div>
+            </a>
 
-      <!-- MENU -->
-      <nav class="hidden md:flex items-center gap-8">
-        <button onclick="showPage('casa')" id="nav-casa" class="nav-btn text-sm font-bold uppercase tracking-wider text-[#0d00ff] border-b-2 border-[#0d00ff] pb-1 transition-all">Casa</button>
-        <button onclick="showPage('quem-somos')" id="nav-quem-somos" class="nav-btn text-sm font-bold uppercase tracking-wider text-zinc-400 hover:text-white transition-all">Cês são fi de quem?</button>
-        <button onclick="showPage('trabalhos')" id="nav-trabalhos" class="nav-btn text-sm font-bold uppercase tracking-wider text-zinc-400 hover:text-white transition-all">Trabalhos</button>
-        <button onclick="showPage('contato')" id="nav-contato" class="nav-btn text-sm font-bold uppercase tracking-wider text-zinc-400 hover:text-white transition-all">Fala tu</button>
-      </nav>
+            <!-- NAV LINKS DESKTOP (MENU SOLICITADO) -->
+            <nav class="hidden md:flex items-center space-x-8 sub-font text-sm uppercase tracking-wider font-semibold">
+                <a href="#casa" class="hover:text-ilu-blue transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-ilu-blue hover:after:w-full after:transition-all">Casa</a>
+                <a href="#ces-sao-fi-de-quem" class="hover:text-ilu-blue transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-ilu-blue hover:after:w-full after:transition-all">Cês são fi de quem?</a>
+                <a href="#trabalhos" class="hover:text-ilu-blue transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-ilu-blue hover:after:w-full after:transition-all">Trabalhos</a>
+                <a href="#fala-tu" class="hover:text-ilu-blue transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-ilu-blue hover:after:w-full after:transition-all">Fala tu</a>
+            </nav>
 
-      <!-- BOTÃO FALA TU (CTA) -->
-      <a href="#" onclick="showPage('contato')" class="hidden sm:inline-block px-5 py-2.5 bg-[#0d00ff] text-white font-bold text-xs uppercase tracking-wider hover:bg-blue-700 transition-all glow-box">
-        Fala tu
-      </a>
-    </div>
-  </header>
+            <!-- CTA HEADER -->
+            <div class="hidden lg:flex items-center">
+                <a href="#fala-tu" class="sub-font bg-ilu-blue hover:bg-ilu-bright text-white px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 transform hover:scale-105 shadow-lg shadow-ilu-blue/30 flex items-center gap-2">
+                    <span>Conectar Rede</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
 
-  <div class="h-20"></div>
-
-  <!-- CONTEÚDO PRINCIPAL -->
-  <main class="flex-grow">
-
-    <!-- PÁGINA 1: CASA -->
-    <section id="page-casa" class="page-content block">
-      <!-- Hero -->
-      <div class="relative min-h-[calc(100vh-5rem)] flex items-center justify-center px-6 py-20 overflow-hidden">
-        <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#0d00ff_1px,transparent_1px)] [background-size:24px_24px]"></div>
-        
-        <div class="max-w-5xl mx-auto text-center z-10 space-y-8">
-          <div class="inline-block px-4 py-1.5 rounded-full border border-[#0d00ff]/50 bg-[#0d00ff]/10 text-[#0d00ff] text-xs font-semibold tracking-widest uppercase">
-            Primeira tecnologia de rede da humanidade
-          </div>
-          
-          <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight font-heading leading-none uppercase">
-            O <span class="text-[#0d00ff] glow-blue">ILÛ</span> É O TAMBOR.<br />
-            A MATRIZ É A MEMÓRIA.
-          </h1>
-          
-          <p class="text-base sm:text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto font-light">
-            Nós não estamos apenas sonhando com o futuro; estamos usando os portais do passado para reescrever o presente. Bem-vindo ao laboratório onde a memória ancestral guia a inovação.
-          </p>
-
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-            <button onclick="showPage('trabalhos')" class="w-full sm:w-auto px-8 py-4 bg-[#0d00ff] text-white font-bold uppercase tracking-wider hover:bg-blue-700 transition-all glow-box">
-              Ver Trabalhos
+            <!-- MOBILE MENU BUTTON -->
+            <button id="mobile-menu-btn" class="md:hidden text-2xl text-ilu-offwhite focus:outline-none p-2" aria-label="Abrir Menu">
+                <i class="fa-solid fa-bars-staggered"></i>
             </button>
-            <button onclick="showPage('quem-somos')" class="w-full sm:w-auto px-8 py-4 border border-zinc-700 text-white font-bold uppercase tracking-wider hover:border-[#0d00ff] transition-all">
-              Cês são fi de quem?
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Carros-chefes -->
-      <div class="py-24 px-6 border-t border-zinc-900 bg-zinc-950/60">
-        <div class="max-w-7xl mx-auto">
-          <div class="text-center mb-16">
-            <span class="text-xs uppercase tracking-widest text-[#0d00ff] font-bold">Especialidades</span>
-            <h2 class="text-3xl md:text-5xl font-heading font-extrabold uppercase mt-2">
-              Nossos <span class="text-[#0d00ff]">Carros-Chefes</span>
-            </h2>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="p-8 border border-zinc-800 bg-zinc-900/40 hover:border-[#0d00ff] transition-all">
-              <div class="text-[#0d00ff] text-2xl font-heading font-bold mb-4">01</div>
-              <h3 class="text-xl font-bold mb-3 font-heading uppercase">Criação de Site</h3>
-              <p class="text-zinc-400 text-sm">Desenvolvimento de plataformas web de alta performance, portais institucionais e MVPs para organizações e empresas.</p>
-            </div>
-
-            <div class="p-8 border border-zinc-800 bg-zinc-900/40 hover:border-[#0d00ff] transition-all">
-              <div class="text-[#0d00ff] text-2xl font-heading font-bold mb-4">02</div>
-              <h3 class="text-xl font-bold mb-3 font-heading uppercase">Tráfego Pago</h3>
-              <p class="text-zinc-400 text-sm">Estratégias avançadas de aquisição, crescimento de engajamento de doadores e performance em campanhas digitais.</p>
-            </div>
-
-            <div class="p-8 border border-zinc-800 bg-zinc-900/40 hover:border-[#0d00ff] transition-all">
-              <div class="text-[#0d00ff] text-2xl font-heading font-bold mb-4">03</div>
-              <h3 class="text-xl font-bold mb-3 font-heading uppercase">Automação</h3>
-              <p class="text-zinc-400 text-sm">Sistemas inteligentes com WhatsApp, APIs e fluxos integrados para otimizar processos e relacionamento.</p>
-            </div>
-
-            <div class="p-8 border border-zinc-800 bg-zinc-900/40 hover:border-[#0d00ff] transition-all">
-              <div class="text-[#0d00ff] text-2xl font-heading font-bold mb-4">04</div>
-              <h3 class="text-xl font-bold mb-3 font-heading uppercase">Aplicativo</h3>
-              <p class="text-zinc-400 text-sm">Criação e desenvolvimento de soluções mobile voltadas para impacto social, comunidades e inovação.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PÁGINA 2: CÊS SÃO FI DE QUEM? -->
-    <section id="page-quem-somos" class="page-content hidden">
-      <div class="py-20 px-6 max-w-6xl mx-auto">
-        <span class="text-xs uppercase tracking-widest text-[#0d00ff] font-bold">Quem Somos / Manifesto</span>
-        <h1 class="text-4xl sm:text-6xl md:text-7xl font-heading font-extrabold uppercase mt-2 mb-12 text-white">
-          CÊS SÃO <span class="text-[#0d00ff] glow-blue">FI DE QUEM?</span>
-        </h1>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          <!-- Texto Manifesto -->
-          <div class="lg:col-span-7 space-y-6 text-base md:text-lg text-zinc-300 font-light leading-relaxed">
-            <p class="text-lg md:text-xl text-white font-semibold border-l-4 border-[#0d00ff] pl-4">
-              Antes do algoritmo, já existia o ritmo. Antes da nuvem, já existia a rede. Antes dos cabos, já existiam caminhos conectando territórios, saberes e pessoas.
-            </p>
-            <p>
-              Nós somos fi de quem veio antes. De quem fez do tambor uma tecnologia de comunicação, do corpo um arquivo vivo e da palavra uma ferramenta para transmitir conhecimento, convocar encontros e atravessar o tempo.
-            </p>
-            <p>
-              O Ilû nasce desse entendimento: a ancestralidade não é uma lembrança guardada no passado. É conhecimento em movimento, tecnologia viva e matéria-prima para inventar outros futuros.
-            </p>
-            <p>
-              Somos um coletivo e laboratório de comunicação e tecnologia que conecta cultura negra, autonomia e afrofuturismo. Criamos linguagens, experiências e soluções que aproximam o saber ancestral das ferramentas contemporâneas, misturando código, design, cultura e experimentação.
-            </p>
-            <p class="text-white font-semibold">
-              Não estamos aqui para esperar o futuro chegar. Estamos aqui para disputar quem o imagina, quem o constrói e quem tem o direito de existir nele.
-            </p>
-            <p>
-              Porque inovar também é lembrar. É reconhecer que muita coisa considerada novidade já existia nas mãos, nas vozes e nas invenções dos nossos ancestrais.
-            </p>
-            <div class="pt-4 text-[#0d00ff] font-heading font-bold text-2xl uppercase">
-              Somos Ilû. Tambor que conecta, memória que pulsa, tecnologia que abre caminhos.
-            </div>
-          </div>
-
-          <!-- Card Essência -->
-          <div class="lg:col-span-5 space-y-8 bg-zinc-900/60 p-8 border border-zinc-800">
-            <div>
-              <span class="text-xs uppercase tracking-widest text-[#0d00ff] font-bold">Nossa Essência</span>
-              <h3 class="text-2xl font-heading font-bold mt-2 mb-4 uppercase">A gente não é do nada.</h3>
-              <p class="text-zinc-400 text-sm leading-relaxed">
-                Nossos ancestrais já dominavam o tempo, as estrelas e a tecnologia da palavra muito antes de qualquer máquina existir. Unimos a ancestralidade com o design contemporâneo e o futuro.
-              </p>
-            </div>
-
-            <div class="border-t border-zinc-800 pt-6 space-y-3">
-              <div class="flex items-center gap-3 text-sm tracking-wider uppercase font-bold text-zinc-300">
-                <span class="w-2 h-2 rounded-full bg-[#0d00ff]"></span> CULTURA
-              </div>
-              <div class="flex items-center gap-3 text-sm tracking-wider uppercase font-bold text-zinc-300">
-                <span class="w-2 h-2 rounded-full bg-[#0d00ff]"></span> TECNOLOGIA
-              </div>
-              <div class="flex items-center gap-3 text-sm tracking-wider uppercase font-bold text-zinc-300">
-                <span class="w-2 h-2 rounded-full bg-[#0d00ff]"></span> AUTONOMIA
-              </div>
-              <div class="flex items-center gap-3 text-sm tracking-wider uppercase font-bold text-zinc-300">
-                <span class="w-2 h-2 rounded-full bg-[#0d00ff]"></span> AFROFUTURISMO
-              </div>
-            </div>
-          </div>
         </div>
 
-        <!-- Realizações -->
-        <div class="mt-20 pt-16 border-t border-zinc-900">
-          <h3 class="text-2xl font-heading font-bold uppercase mb-8 text-center">Impacto & Realizações</h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="p-6 border border-zinc-800 bg-zinc-900/30">
-              <ul class="space-y-3 text-sm text-zinc-300 list-disc list-inside">
-                <li>Estruturação da estratégia de marketing e relacionamento com doadores do Instituto O Grito;</li>
-                <li>Criação da primeira régua de relacionamento com patrocinadores e apoiadores da organização;</li>
-                <li>Crescimento significativo do engajamento de doadores e fortalecimento da comunicação institucional;</li>
-                <li>Desenvolvimento de soluções tecnológicas voltadas para gestão, monitoramento e geração de indicadores de impacto;</li>
-              </ul>
+        <!-- MOBILE NAV OVERLAY -->
+        <div id="mobile-menu" class="hidden md:hidden bg-ilu-bg/95 border-b border-white/10 px-6 py-8 backdrop-blur-xl">
+            <nav class="flex flex-col space-y-6 sub-font text-lg uppercase tracking-wider font-bold">
+                <a href="#casa" class="mobile-link hover:text-ilu-blue transition-colors">Casa</a>
+                <a href="#ces-sao-fi-de-quem" class="mobile-link hover:text-ilu-blue transition-colors">Cês são fi de quem?</a>
+                <a href="#trabalhos" class="mobile-link hover:text-ilu-blue transition-colors">Trabalhos</a>
+                <a href="#fala-tu" class="mobile-link hover:text-ilu-blue transition-colors">Fala tu</a>
+                <a href="#fala-tu" class="mobile-link bg-ilu-blue text-center text-white py-3 rounded-xl mt-4">Iniciar Projeto</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="relative pt-20">
+
+        <!-- HERO SECTION (CASA) -->
+        <section id="casa" class="min-h-[90vh] flex items-center justify-center relative overflow-hidden py-20 px-4">
+            
+            <!-- Glow background decorativo -->
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-ilu-blue/20 rounded-full blur-[120px] pointer-events-none animate-pulse-slow"></div>
+            
+            <!-- Grade Afrofuturista de fundo -->
+            <div class="absolute inset-0 bg-[linear-gradient(to_right,#1f1f2e15_1px,transparent_1px),linear-gradient(to_bottom,#1f1f2e15_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"></div>
+
+            <div class="max-w-6xl mx-auto text-center relative z-10">
+                
+                <!-- Tag Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-ilu-card border border-ilu-blue/40 text-ilu-blue sub-font text-xs uppercase tracking-widest mb-8">
+                    <span class="w-2 h-2 rounded-full bg-ilu-blue animate-ping"></span>
+                    <span>Primeira tecnologia de rede da humanidade</span>
+                </div>
+
+                <!-- Título Principal -->
+                <h1 class="heading-font text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold uppercase tracking-tight leading-[0.95] mb-8">
+                    O <span class="text-ilu-blue">Ilû</span> é o tambor.<br>
+                    A matriz é <span class="text-stroke-white hover:text-ilu-offwhite transition-all duration-500">Ancestral</span>.
+                </h1>
+
+                <!-- Subtítulo Manifesto -->
+                <p class="max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-ilu-offwhite/80 font-normal leading-relaxed mb-10">
+                    Nossos ancestrais já dominavam o tempo, as estrelas e a tecnologia da palavra muito antes de qualquer máquina existir. Nós não estamos apenas sonhando com o futuro; estamos usando os portais do passado para reescrever o presente.
+                </p>
+
+                <!-- Ações e CTA -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+                    <a href="#fala-tu" class="w-full sm:w-auto sub-font bg-ilu-blue hover:bg-ilu-bright text-white px-8 py-4 rounded-xl text-sm font-bold uppercase tracking-wider transition-all duration-300 transform hover:-translate-y-1 glow-klein flex items-center justify-center gap-3">
+                        <span>Reescrever o Presente</span>
+                        <i class="fa-solid fa-bolt"></i>
+                    </a>
+                    <a href="#ces-sao-fi-de-quem" class="w-full sm:w-auto sub-font border border-white/20 hover:border-ilu-blue px-8 py-4 rounded-xl text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:bg-white/5 flex items-center justify-center gap-2">
+                        <span>Conhecer o Laboratório</span>
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </a>
+                </div>
+
+                <!-- Stats / Bar -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 pt-10 border-t border-white/10 text-left">
+                    <div>
+                        <div class="heading-font text-3xl md:text-4xl font-extrabold text-ilu-blue">100%</div>
+                        <div class="sub-font text-xs uppercase tracking-wider text-ilu-offwhite/60 mt-1">Autonomia Negra</div>
+                    </div>
+                    <div>
+                        <div class="heading-font text-3xl md:text-4xl font-extrabold text-ilu-offwhite">2026+</div>
+                        <div class="sub-font text-xs uppercase tracking-wider text-ilu-offwhite/60 mt-1">Afrofuturismo Vivo</div>
+                    </div>
+                    <div>
+                        <div class="heading-font text-3xl md:text-4xl font-extrabold text-ilu-blue">01</div>
+                        <div class="sub-font text-xs uppercase tracking-wider text-ilu-offwhite/60 mt-1">Tambor = Transmissão</div>
+                    </div>
+                    <div>
+                        <div class="heading-font text-3xl md:text-4xl font-extrabold text-ilu-offwhite">∞</div>
+                        <div class="sub-font text-xs uppercase tracking-wider text-ilu-offwhite/60 mt-1">Conexões Ancestrais</div>
+                    </div>
+                </div>
+
             </div>
-            <div class="p-6 border border-zinc-800 bg-zinc-900/30">
-              <ul class="space-y-3 text-sm text-zinc-300 list-disc list-inside">
-                <li>Criação de plataformas digitais e MVPs para organizações sociais e projetos de inovação;</li>
-                <li>Desenvolvimento de automações utilizando WhatsApp, APIs e ferramentas de integração;</li>
-                <li>Coordenação de projetos de comunicação, branding e transformação digital.</li>
-              </ul>
+        </section>
+
+        <!-- BANNER DE MARQUEE CONTINUA -->
+        <div class="py-4 bg-ilu-blue text-white overflow-hidden uppercase font-black sub-font text-sm tracking-widest whitespace-nowrap rotate-1 my-10 border-y border-white/20">
+            <div class="inline-flex space-x-8 animate-[spin-slow_20s_linear_infinite]" style="animation: marquee 25s linear infinite;">
+                <span>✦ Autonomia Digital</span>
+                <span>✦ Comunicação Ancestral</span>
+                <span>✦ Design Editorial Contemporâneo</span>
+                <span>✦ Afrofuturismo Urbano</span>
+                <span>✦ Tecnologia de Rede</span>
+                <span>✦ Branding & Estratégia</span>
+                <span>✦ Autonomia Digital</span>
+                <span>✦ Comunicação Ancestral</span>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PÁGINA 3: TRABALHOS -->
-    <section id="page-trabalhos" class="page-content hidden">
-      <div class="py-20 px-6 max-w-7xl mx-auto">
-        <div class="mb-16">
-          <span class="text-xs uppercase tracking-widest text-[#0d00ff] font-bold">Portfólio</span>
-          <h1 class="text-4xl sm:text-6xl font-heading font-extrabold uppercase mt-2">
-            Nossos <span class="text-[#0d00ff]">Trabalhos</span>
-          </h1>
-          <p class="text-zinc-400 mt-2 max-w-xl">
-            Projetos desenvolvidos, marcas, aplicações móveis, plataformas web e ecossistemas de tecnologia.
-          </p>
         </div>
 
-        <!-- App em Destaque -->
-        <div class="mb-16 p-8 md:p-12 border border-[#0d00ff]/50 bg-gradient-to-r from-zinc-900 to-zinc-950 relative">
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div>
-              <span class="px-3 py-1 bg-[#0d00ff] text-white text-xs font-bold uppercase tracking-wider">Aplicativo</span>
-              <h3 class="text-3xl font-heading font-bold mt-4 mb-3">Clube do Grito</h3>
-              <p class="text-zinc-300 text-sm mb-6 leading-relaxed">
-                Plataforma e aplicativo mobile voltados para benefícios sociais, conexão de comunidades e engajamento.
-              </p>
-              <a href="https://clubedogrito.institutoogrito.com.br/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-3 bg-[#0d00ff] text-white font-bold text-xs uppercase tracking-wider hover:bg-blue-700 transition-all">
-                Acessar Aplicativo &rarr;
-              </a>
+        <style>
+            @keyframes marquee {
+                0% { transform: translateX(0%); }
+                100% { transform: translateX(-50%); }
+            }
+        </style>
+
+        <!-- ABOUT SECTION (CÊS SÃO FI DE QUEM?) -->
+        <section id="ces-sao-fi-de-quem" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Coluna de Texto Principal -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 text-ilu-blue sub-font text-xs uppercase tracking-widest font-bold">
+                        <i class="fa-solid fa-fingerprint"></i>
+                        <span>Cês são fi de quem? — Origem & Essência</span>
+                    </div>
+
+                    <h2 class="heading-font text-3xl sm:text-5xl font-extrabold uppercase leading-tight">
+                        Coletivo e laboratório de <span class="text-ilu-blue">comunicação</span> & <span class="text-stroke-white">tecnologia</span>.
+                    </h2>
+
+                    <p class="text-base sm:text-lg text-ilu-offwhite/80 leading-relaxed font-light">
+                        O <strong class="text-white font-semibold">Lab Ilû</strong> é um espaço focado em autonomia, cultura negra e afrofuturismo. O Ilû (o tambor ancestral) é trabalhado por nós como a primeira tecnologia de rede e transmissão de dados da humanidade.
+                    </p>
+
+                    <p class="text-base sm:text-lg text-ilu-offwhite/80 leading-relaxed font-light">
+                        Nossa proposta une o resgate da memória ancestral com a linguagem futurista, urbana e o design contemporâneo de alto impacto. Não fazemos apenas propaganda; construímos ecossistemas de narrativa e identidade para marcas que querem mover a cultura.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6">
+                        <div class="p-5 bg-ilu-card rounded-2xl border border-white/10 hover:border-ilu-blue/50 transition-colors">
+                            <i class="fa-solid fa-drum text-ilu-blue text-2xl mb-3"></i>
+                            <h3 class="heading-font text-lg font-bold uppercase mb-1">O Tambor (Ilû)</h3>
+                            <p class="text-xs text-ilu-offwhite/70">A frequência rítmica que codificou mensagens através dos territórios antes da fibra ótica.</p>
+                        </div>
+                        <div class="p-5 bg-ilu-card rounded-2xl border border-white/10 hover:border-ilu-blue/50 transition-colors">
+                            <i class="fa-solid fa-microchip text-ilu-blue text-2xl mb-3"></i>
+                            <h3 class="heading-font text-lg font-bold uppercase mb-1">O Laboratório (Lab)</h3>
+                            <p class="text-xs text-ilu-offwhite/70">A incubadora de ideias, código, marcas vibrantes e mídias independentes.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coluna de Elemento Visual Editorial -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <!-- Moldura Editorial de Alto Impacto -->
+                        <div class="aspect-[4/5] bg-gradient-to-br from-ilu-blue via-ilu-dark to-black rounded-3xl p-8 border border-ilu-blue/40 flex flex-col justify-between relative overflow-hidden group shadow-2xl">
+                            
+                            <!-- Pattern Overlay -->
+                            <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                            
+                            <!-- Icone d'água -->
+                            <div class="absolute -right-10 -bottom-10 text-white/5 text-9xl font-black heading-font select-none">
+                                ILÛ
+                            </div>
+
+                            <div class="relative z-10 flex justify-between items-start">
+                                <span class="sub-font text-xs uppercase tracking-widest text-ilu-offwhite/70 bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">Manifesto '26</span>
+                                <i class="fa-solid fa-star text-ilu-blue text-xl"></i>
+                            </div>
+
+                            <div class="relative z-10 my-auto py-8">
+                                <blockquote class="heading-font text-xl sm:text-2xl font-bold uppercase leading-snug">
+                                    "A memória ancestral não é um arquivo guardado. É o algoritmo mais avançado do nosso tempo."
+                                </blockquote>
+                            </div>
+
+                            <div class="relative z-10 flex items-center gap-4 pt-4 border-t border-white/20">
+                                <div class="w-12 h-12 rounded-full bg-ilu-blue flex items-center justify-center font-bold text-white sub-font">
+                                    BH
+                                </div>
+                                <div>
+                                    <div class="font-bold sub-font text-sm uppercase">Lab Ilû Coletivo</div>
+                                    <div class="text-xs text-ilu-offwhite/60">Belo Horizonte / Global</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div class="hidden lg:block text-right text-8xl font-heading font-black text-zinc-800 select-none">
-              APP
+        </section>
+
+        <!-- SERVIÇOS SECTION (ADAPTADOS DO CORRE COMUNICA COM O TOM LAB ILÛ) -->
+        <section class="py-24 bg-ilu-card/50 border-y border-white/10 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                    <div>
+                        <span class="text-ilu-blue sub-font text-xs uppercase tracking-widest font-bold">Serviços & Modulações</span>
+                        <h2 class="heading-font text-3xl sm:text-5xl font-extrabold uppercase mt-2">Tecnologias de Comunicação</h2>
+                    </div>
+                    <p class="text-ilu-offwhite/70 max-w-md text-sm">
+                        Soluções completas adaptadas da nossa bagagem de mercado para elevar o patamar estético e estratégico do seu projeto.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Card 1 -->
+                    <div class="p-8 rounded-2xl bg-ilu-bg border border-white/10 hover:border-ilu-blue transition-all duration-300 group hover:-translate-y-2 flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 rounded-xl bg-ilu-blue/10 border border-ilu-blue/30 text-ilu-blue flex items-center justify-center text-2xl mb-6 group-hover:bg-ilu-blue group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-palette"></i>
+                            </div>
+                            <h3 class="heading-font text-xl font-bold uppercase mb-3">Branding & Identidade Visual</h3>
+                            <p class="text-sm text-ilu-offwhite/70 leading-relaxed">
+                                Criação de sistemas visuais marcantes, logotipos, tipografias e universos de marca que conectam ancestralidade com futurismo.
+                            </p>
+                        </div>
+                        <div class="mt-8 pt-4 border-t border-white/5 flex items-center justify-between text-xs sub-font text-ilu-blue font-bold">
+                            <span>SISTEMAS VISUAIS</span>
+                            <i class="fa-solid fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="p-8 rounded-2xl bg-ilu-bg border border-white/10 hover:border-ilu-blue transition-all duration-300 group hover:-translate-y-2 flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 rounded-xl bg-ilu-blue/10 border border-ilu-blue/30 text-ilu-blue flex items-center justify-center text-2xl mb-6 group-hover:bg-ilu-blue group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-code"></i>
+                            </div>
+                            <h3 class="heading-font text-xl font-bold uppercase mb-3">Websites & Experiências Astro</h3>
+                            <p class="text-sm text-ilu-offwhite/70 leading-relaxed">
+                                Desenvolvimento em Astro.build, React e Webflow. Sites ultra velozes, responsivos e otimizados para máxima autonomia do cliente.
+                            </p>
+                        </div>
+                        <div class="mt-8 pt-4 border-t border-white/5 flex items-center justify-between text-xs sub-font text-ilu-blue font-bold">
+                            <span>PLATAFORMAS DIGITAIS</span>
+                            <i class="fa-solid fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="p-8 rounded-2xl bg-ilu-bg border border-white/10 hover:border-ilu-blue transition-all duration-300 group hover:-translate-y-2 flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 rounded-xl bg-ilu-blue/10 border border-ilu-blue/30 text-ilu-blue flex items-center justify-center text-2xl mb-6 group-hover:bg-ilu-blue group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+                            <h3 class="heading-font text-xl font-bold uppercase mb-3">Mídia & Tráfego Pago</h3>
+                            <p class="text-sm text-ilu-offwhite/70 leading-relaxed">
+                                Estratégia de anúncios no Meta Ads e Google Ads com inteligência de público para amplificar sua mensagem e acelerar resultados.
+                            </p>
+                        </div>
+                        <div class="mt-8 pt-4 border-t border-white/5 flex items-center justify-between text-xs sub-font text-ilu-blue font-bold">
+                            <span>PERFORMANCE & ALCANCE</span>
+                            <i class="fa-solid fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="p-8 rounded-2xl bg-ilu-bg border border-white/10 hover:border-ilu-blue transition-all duration-300 group hover:-translate-y-2 flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 rounded-xl bg-ilu-blue/10 border border-ilu-blue/30 text-ilu-blue flex items-center justify-center text-2xl mb-6 group-hover:bg-ilu-blue group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-compass"></i>
+                            </div>
+                            <h3 class="heading-font text-xl font-bold uppercase mb-3">Consultoria Estratégica</h3>
+                            <p class="text-sm text-ilu-offwhite/70 leading-relaxed">
+                                Mentoria e posicionamento cultural para marcas, coletivos e projetos que buscam inovação, propósito e autonomia comercial.
+                            </p>
+                        </div>
+                        <div class="mt-8 pt-4 border-t border-white/5 flex items-center justify-between text-xs sub-font text-ilu-blue font-bold">
+                            <span>AUTONOMIA & DIREÇÃO</span>
+                            <i class="fa-solid fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="p-8 rounded-2xl bg-ilu-bg border border-white/10 hover:border-ilu-blue transition-all duration-300 group hover:-translate-y-2 flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 rounded-xl bg-ilu-blue/10 border border-ilu-blue/30 text-ilu-blue flex items-center justify-center text-2xl mb-6 group-hover:bg-ilu-blue group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-clapperboard"></i>
+                            </div>
+                            <h3 class="heading-font text-xl font-bold uppercase mb-3">Audiovisual & Direção de Arte</h3>
+                            <p class="text-sm text-ilu-offwhite/70 leading-relaxed">
+                                Produção de conteúdo estético para campanhas, fotografia, vídeos curtos e direção criativa com linguagem das ruas.
+                            </p>
+                        </div>
+                        <div class="mt-8 pt-4 border-t border-white/5 flex items-center justify-between text-xs sub-font text-ilu-blue font-bold">
+                            <span>PRODUÇÃO CULTURAL</span>
+                            <i class="fa-solid fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="p-8 rounded-2xl bg-ilu-bg border border-white/10 hover:border-ilu-blue transition-all duration-300 group hover:-translate-y-2 flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 rounded-xl bg-ilu-blue/10 border border-ilu-blue/30 text-ilu-blue flex items-center justify-center text-2xl mb-6 group-hover:bg-ilu-blue group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-share-nodes"></i>
+                            </div>
+                            <h3 class="heading-font text-xl font-bold uppercase mb-3">Gestão de Mídias Digitais</h3>
+                            <p class="text-sm text-ilu-offwhite/70 leading-relaxed">
+                                Planejamento editorial, redação de conteúdo com voz própria e distribuição inteligente para redes sociais.
+                            </p>
+                        </div>
+                        <div class="mt-8 pt-4 border-t border-white/5 flex items-center justify-between text-xs sub-font text-ilu-blue font-bold">
+                            <span>ENGAJAMENTO REAL</span>
+                            <i class="fa-solid fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
-          </div>
-        </div>
+        </section>
 
-        <!-- Marcas / Google Drive -->
-        <div class="mb-16">
-          <h2 class="text-2xl font-heading font-bold mb-4 uppercase">Identidades Visuais & Marcas</h2>
-          <p class="text-zinc-400 text-sm mb-6">Aceda ao repositório de identidades visuais e projetos gráficos:</p>
-          <a href="https://drive.google.com/drive/folders/18UTHomazC-gzaVqqd28xbiFCprgfMXG_?usp=sharing" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-4 border border-zinc-700 bg-zinc-900 hover:border-[#0d00ff] text-white font-bold text-sm uppercase tracking-wider transition-all">
-            📂 Ver Pasta de Marcas no Google Drive &nearr;
-          </a>
-        </div>
-
-        <!-- Sites Feitos -->
-        <div class="mb-16">
-          <h2 class="text-2xl font-heading font-bold mb-6 uppercase">Sites Feitos e Contribuídos</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <a href="https://institutoogrito.org/" target="_blank" rel="noopener" class="p-6 border border-zinc-800 bg-zinc-900/40 hover:border-[#0d00ff] transition-all flex flex-col justify-between h-36">
-              <h3 class="font-bold text-lg font-heading">Instituto O Grito</h3>
-              <span class="text-xs text-[#0d00ff] flex items-center gap-1 font-semibold">Visitar site &nearr;</span>
-            </a>
-
-            <a href="https://casaclean.com.br/" target="_blank" rel="noopener" class="p-6 border border-zinc-800 bg-zinc-900/40 hover:border-[#0d00ff] transition-all flex flex-col justify-between h-36">
-              <h3 class="font-bold text-lg font-heading">Casa Clean</h3>
-              <span class="text-xs text-[#0d00ff] flex items-center gap-1 font-semibold">Visitar site &nearr;</span>
-            </a>
-
-            <a href="https://casadecordamilagres.com.br/" target="_blank" rel="noopener" class="p-6 border border-zinc-800 bg-zinc-900/40 hover:border-[#0d00ff] transition-all flex flex-col justify-between h-36">
-              <h3 class="font-bold text-lg font-heading">Casa de Corda Milagres</h3>
-              <span class="text-xs text-[#0d00ff] flex items-center gap-1 font-semibold">Visitar site &nearr;</span>
-            </a>
-
-            <a href="https://mulheresdaquebrada.com.br/" target="_blank" rel="noopener" class="p-6 border border-zinc-800 bg-zinc-900/40 hover:border-[#0d00ff] transition-all flex flex-col justify-between h-36">
-              <h3 class="font-bold text-lg font-heading">Mulheres da Quebrada</h3>
-              <span class="text-xs text-[#0d00ff] flex items-center gap-1 font-semibold">Visitar site &nearr;</span>
-            </a>
-
-            <a href="https://correcomunica.com.br/" target="_blank" rel="noopener" class="p-6 border border-zinc-800 bg-zinc-900/40 hover:border-[#0d00ff] transition-all flex flex-col justify-between h-36">
-              <h3 class="font-bold text-lg font-heading">Corre Comunica</h3>
-              <span class="text-xs text-[#0d00ff] flex items-center gap-1 font-semibold">Visitar site &nearr;</span>
-            </a>
-
-            <a href="https://aromeiazero.org.br/" target="_blank" rel="noopener" class="p-6 border border-zinc-800 bg-zinc-900/40 hover:border-[#0d00ff] transition-all flex flex-col justify-between h-36">
-              <h3 class="font-bold text-lg font-heading">Instituto Aromeiazero</h3>
-              <span class="text-xs text-[#0d00ff] flex items-center gap-1 font-semibold">Visitar site &nearr;</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- GitHub -->
-        <div>
-          <h2 class="text-2xl font-heading font-bold mb-4 uppercase">Automação & Código (GitHub)</h2>
-          <p class="text-zinc-400 text-sm mb-6">Projetos de automação, integrações via API e repositórios de código:</p>
-          <a href="https://github.com/JuuCorreaa" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-4 border border-[#0d00ff] bg-[#0d00ff]/10 text-[#0d00ff] hover:bg-[#0d00ff] hover:text-white font-bold text-sm uppercase tracking-wider transition-all">
-            ⚡ Repositório GitHub (@JuuCorreaa) &nearr;
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- PÁGINA 4: FALA TU -->
-    <section id="page-contato" class="page-content hidden">
-      <div class="py-20 px-6 max-w-4xl mx-auto">
-        <div class="text-center mb-12">
-          <span class="text-xs uppercase tracking-widest text-[#0d00ff] font-bold">Contato</span>
-          <h1 class="text-4xl sm:text-6xl font-heading font-extrabold uppercase mt-2">
-            FALA <span class="text-[#0d00ff] glow-blue">TU</span>
-          </h1>
-          <p class="text-zinc-400 mt-2 max-w-md mx-auto text-sm">
-            Vamos construir juntos? Envia a tua mensagem para iniciarmos o diálogo.
-          </p>
-        </div>
-
-        <div class="border border-zinc-800 bg-zinc-900/50 p-8 md:p-12">
-          <form onsubmit="alert('Mensagem enviada com sucesso!'); return false;" class="space-y-6">
-            <div>
-              <label class="block text-xs uppercase tracking-wider text-zinc-400 mb-2 font-bold">Seu Nome / Coletivo</label>
-              <input type="text" required class="w-full bg-zinc-950 border border-zinc-800 p-4 text-white focus:outline-none focus:border-[#0d00ff] transition-colors" placeholder="Nome ou organização">
+        <!-- PORTFOLIO SECTION (TRABALHOS) -->
+        <section id="trabalhos" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-ilu-blue sub-font text-xs uppercase tracking-widest font-bold">Trabalhos — Mostra & Portfólio</span>
+                <h2 class="heading-font text-3xl sm:text-5xl font-extrabold uppercase mt-2">Nossas Transmissões</h2>
+                <p class="text-ilu-offwhite/70 mt-4">
+                    Inspirações e projetos conceituais guiados pela estética afrofuturista e brasilidade editorial urbana.
+                </p>
             </div>
 
-            <div>
-              <label class="block text-xs uppercase tracking-wider text-zinc-400 mb-2 font-bold">E-mail ou WhatsApp</label>
-              <input type="text" required class="w-full bg-zinc-950 border border-zinc-800 p-4 text-white focus:outline-none focus:border-[#0d00ff] transition-colors" placeholder="Contacto para retorno">
+            <!-- Grid de Trabalhos de Alto Impacto -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Item 1 -->
+                <div class="group relative rounded-3xl overflow-hidden bg-ilu-card border border-white/10 hover:border-ilu-blue transition-all duration-500">
+                    <div class="aspect-[16/10] overflow-hidden bg-ilu-dark relative">
+                        <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1000&q=80" alt="Projeto Brasilidade" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-ilu-bg via-transparent to-transparent opacity-90"></div>
+                    </div>
+                    <div class="p-8 relative z-10 -mt-20">
+                        <span class="sub-font text-xs text-ilu-blue font-bold uppercase tracking-wider bg-ilu-blue/20 px-3 py-1 rounded-full border border-ilu-blue/30">Identidade Visual & Festival</span>
+                        <h3 class="heading-font text-2xl font-extrabold uppercase mt-3 mb-2 group-hover:text-ilu-blue transition-colors">Festival Sonoridades Afrofuturas</h3>
+                        <p class="text-sm text-ilu-offwhite/70 line-clamp-2">Criação do ecossistema visual e estratégia de transmissão para festival de música independente.</p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="group relative rounded-3xl overflow-hidden bg-ilu-card border border-white/10 hover:border-ilu-blue transition-all duration-500">
+                    <div class="aspect-[16/10] overflow-hidden bg-ilu-dark relative">
+                        <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1000&q=80" alt="Projeto Moda Urbana" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-ilu-bg via-transparent to-transparent opacity-90"></div>
+                    </div>
+                    <div class="p-8 relative z-10 -mt-20">
+                        <span class="sub-font text-xs text-ilu-blue font-bold uppercase tracking-wider bg-ilu-blue/20 px-3 py-1 rounded-full border border-ilu-blue/30">Branding & Lookbook</span>
+                        <h3 class="heading-font text-2xl font-extrabold uppercase mt-3 mb-2 group-hover:text-ilu-blue transition-colors">Editorial Cajuá Streetwear</h3>
+                        <p class="text-sm text-ilu-offwhite/70 line-clamp-2">Design editorial contemporâneo e e-commerce de alta performance para marca urbana.</p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="group relative rounded-3xl overflow-hidden bg-ilu-card border border-white/10 hover:border-ilu-blue transition-all duration-500">
+                    <div class="aspect-[16/10] overflow-hidden bg-ilu-dark relative">
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1000&q=80" alt="Plataforma Web Astro" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-ilu-bg via-transparent to-transparent opacity-90"></div>
+                    </div>
+                    <div class="p-8 relative z-10 -mt-20">
+                        <span class="sub-font text-xs text-ilu-blue font-bold uppercase tracking-wider bg-ilu-blue/20 px-3 py-1 rounded-full border border-ilu-blue/30">Web Design em Astro</span>
+                        <h3 class="heading-font text-2xl font-extrabold uppercase mt-3 mb-2 group-hover:text-ilu-blue transition-colors">Portal da Memória & Tecnologia</h3>
+                        <p class="text-sm text-ilu-offwhite/70 line-clamp-2">Plataforma digital para preservação de acervos culturais com arquitetura moderna e veloz.</p>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="group relative rounded-3xl overflow-hidden bg-ilu-card border border-white/10 hover:border-ilu-blue transition-all duration-500">
+                    <div class="aspect-[16/10] overflow-hidden bg-ilu-dark relative">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1000&q=80" alt="Arte Digital 3D" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-ilu-bg via-transparent to-transparent opacity-90"></div>
+                    </div>
+                    <div class="p-8 relative z-10 -mt-20">
+                        <span class="sub-font text-xs text-ilu-blue font-bold uppercase tracking-wider bg-ilu-blue/20 px-3 py-1 rounded-full border border-ilu-blue/30">Campanha Tráfego & Mídia</span>
+                        <h3 class="heading-font text-2xl font-extrabold uppercase mt-3 mb-2 group-hover:text-ilu-blue transition-colors">Rede Felici — Autonomia em Mídia</h3>
+                        <p class="text-sm text-ilu-offwhite/70 line-clamp-2">Campanha de tráfego de alta conversão para aceleração de empreendedores negros.</p>
+                    </div>
+                </div>
+
             </div>
 
-            <div>
-              <label class="block text-xs uppercase tracking-wider text-zinc-400 mb-2 font-bold">Mensagem</label>
-              <textarea rows="5" required class="w-full bg-zinc-950 border border-zinc-800 p-4 text-white focus:outline-none focus:border-[#0d00ff] transition-colors" placeholder="Descreva o seu projeto ou necessidade..."></textarea>
+        </section>
+
+        <!-- CONTATO SECTION (FALA TU) -->
+        <section id="fala-tu" class="py-24 bg-ilu-card relative overflow-hidden border-t border-white/10">
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    
+                    <!-- Informações de Contato -->
+                    <div class="lg:col-span-5 space-y-8">
+                        <div>
+                            <span class="text-ilu-blue sub-font text-xs uppercase tracking-widest font-bold">Fala tu — Contato Direto</span>
+                            <h2 class="heading-font text-4xl sm:text-5xl font-extrabold uppercase mt-2">Bora trocar uma ideia?</h2>
+                            <p class="text-ilu-offwhite/70 mt-4 text-sm sm:text-base">
+                                Quer colocar sua marca na frequência do futuro? Manda a mensagem ou aciona a nossa rede nos canais diretos.
+                            </p>
+                        </div>
+
+                        <div class="space-y-6 sub-font">
+                            <!-- WhatsApp -->
+                            <a href="https://wa.me/5531983224027" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-4 rounded-xl bg-ilu-bg border border-white/10 hover:border-ilu-blue transition-colors group">
+                                <div class="w-12 h-12 rounded-lg bg-ilu-blue/20 text-ilu-blue flex items-center justify-center text-xl group-hover:bg-ilu-blue group-hover:text-white transition-colors">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-ilu-offwhite/50 uppercase">WhatsApp Direto</div>
+                                    <div class="font-bold text-base text-white">(31) 98322-4027</div>
+                                </div>
+                            </a>
+
+                            <!-- Email -->
+                            <a href="mailto:contato@correcomunica.com.br" class="flex items-center gap-4 p-4 rounded-xl bg-ilu-bg border border-white/10 hover:border-ilu-blue transition-colors group">
+                                <div class="w-12 h-12 rounded-lg bg-ilu-blue/20 text-ilu-blue flex items-center justify-center text-xl group-hover:bg-ilu-blue group-hover:text-white transition-colors">
+                                    <i class="fa-regular fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-ilu-offwhite/50 uppercase">E-mail</div>
+                                    <div class="font-bold text-base text-white">contato@correcomunica.com.br</div>
+                                </div>
+                            </a>
+
+                            <!-- Localização -->
+                            <div class="flex items-center gap-4 p-4 rounded-xl bg-ilu-bg border border-white/10">
+                                <div class="w-12 h-12 rounded-lg bg-ilu-blue/20 text-ilu-blue flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-ilu-offwhite/50 uppercase">Base / Matriz</div>
+                                    <div class="font-bold text-base text-white">Belo Horizonte — MG / Brasil</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Redes Sociais -->
+                        <div class="pt-4">
+                            <div class="text-xs uppercase tracking-widest text-ilu-offwhite/50 mb-3 sub-font">Siga o Lab</div>
+                            <div class="flex space-x-4 text-xl">
+                                <a href="https://instagram.com" target="_blank" class="w-10 h-10 rounded-full bg-ilu-bg border border-white/10 flex items-center justify-center hover:bg-ilu-blue hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="https://linkedin.com" target="_blank" class="w-10 h-10 rounded-full bg-ilu-bg border border-white/10 flex items-center justify-center hover:bg-ilu-blue hover:text-white transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="https://behance.net" target="_blank" class="w-10 h-10 rounded-full bg-ilu-bg border border-white/10 flex items-center justify-center hover:bg-ilu-blue hover:text-white transition-colors"><i class="fa-brands fa-behance"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Formulário estilizado -->
+                    <div class="lg:col-span-7 bg-ilu-bg p-8 sm:p-10 rounded-3xl border border-white/10 relative">
+                        <form id="contact-form" class="space-y-6" onsubmit="handleFormSubmit(event)">
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-xs uppercase tracking-wider sub-font font-bold mb-2 text-ilu-offwhite/80">Seu Nome / Quem é tu?</label>
+                                    <input type="text" required class="w-full bg-ilu-card border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-ilu-blue transition-colors text-sm" placeholder="Ex: Dandara dos Santos">
+                                </div>
+                                <div>
+                                    <label class="block text-xs uppercase tracking-wider sub-font font-bold mb-2 text-ilu-offwhite/80">E-mail de Contato</label>
+                                    <input type="email" required class="w-full bg-ilu-card border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-ilu-blue transition-colors text-sm" placeholder="seuemail@dominio.com">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs uppercase tracking-wider sub-font font-bold mb-2 text-ilu-offwhite/80">Qual serviço cê tá precisando?</label>
+                                <select class="w-full bg-ilu-card border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-ilu-blue transition-colors text-sm">
+                                    <option value="branding">Branding & Identidade Visual</option>
+                                    <option value="website">Website / Plataforma Astro</option>
+                                    <option value="trafego">Tráfego Pago & Mídia</option>
+                                    <option value="consultoria">Consultoria Estratégica</option>
+                                    <option value="audiovisual">Audiovisual & Conteúdo</option>
+                                    <option value="outros">Outra fita / Projeto Completo</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs uppercase tracking-wider sub-font font-bold mb-2 text-ilu-offwhite/80">Conta a ideia do projeto</label>
+                                <textarea rows="4" required class="w-full bg-ilu-card border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-ilu-blue transition-colors text-sm" placeholder="Qual a visão do seu projeto? Qual prazo cê tem em mente?"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full sub-font bg-ilu-blue hover:bg-ilu-bright text-white py-4 rounded-xl font-bold uppercase tracking-widest text-sm transition-all duration-300 shadow-lg shadow-ilu-blue/40 flex items-center justify-center gap-3">
+                                <span>Mandar Sinal pra Rede</span>
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+
+                            <!-- Caixa de Feedback customizada em substituição ao alert() -->
+                            <div id="form-message" class="hidden p-4 rounded-xl bg-ilu-blue/20 border border-ilu-blue text-white text-sm text-center sub-font">
+                                Axé! Sua mensagem foi enviada. Em breve retornamos a transmissão!
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
             </div>
 
-            <button type="submit" class="w-full py-4 bg-[#0d00ff] text-white font-bold uppercase tracking-wider hover:bg-blue-700 transition-all glow-box">
-              Enviar Mensagem
-            </button>
-          </form>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            
+            <div class="flex items-center gap-3">
+                <span class="heading-font font-extrabold text-lg text-ilu-blue">LAB ILÛ</span>
+                <span class="text-xs text-ilu-offwhite/40">© 2026 — Memória Ancestral & Inovação Futurista</span>
+            </div>
+
+            <div class="sub-font text-xs uppercase tracking-widest text-ilu-offwhite/50 flex gap-6">
+                <a href="#casa" class="hover:text-ilu-blue transition-colors">Casa</a>
+                <a href="#ces-sao-fi-de-quem" class="hover:text-ilu-blue transition-colors">Cês são fi de quem?</a>
+                <a href="#trabalhos" class="hover:text-ilu-blue transition-colors">Trabalhos</a>
+                <a href="#fala-tu" class="hover:text-ilu-blue transition-colors">Fala tu</a>
+            </div>
+
         </div>
-      </div>
-    </section>
+    </footer>
 
-  </main>
+    <!-- SCRIPT DE INTERATIVIDADE E NAVEGAÇÃO -->
+    <script>
+        // Toggle Menu Mobile
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
 
-  <!-- FOOTER -->
-  <footer class="border-t border-zinc-900 bg-zinc-950 py-12 px-6">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-zinc-500">
-      <div>
-        <span class="font-heading text-lg font-bold text-white">LAB ILÛ</span>
-        <p class="mt-1">Laboratório de Comunicação e Tecnologia.</p>
-      </div>
-      <div>
-        &copy; Lab Ilû. Todos os direitos reservados.
-      </div>
-    </div>
-  </footer>
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
 
-  <!-- SCRIPT DE NAVEGAÇÃO ENTRE PÁGINAS -->
-  <script>
-    function showPage(pageId) {
-      const pages = document.querySelectorAll('.page-content');
-      pages.forEach(page => page.classList.add('hidden'));
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
 
-      const targetPage = document.getElementById('page-' + pageId);
-      if (targetPage) {
-        targetPage.classList.remove('hidden');
-      }
-
-      const navButtons = document.querySelectorAll('.nav-btn');
-      navButtons.forEach(btn => {
-        btn.classList.remove('text-[#0d00ff]', 'border-b-2', 'border-[#0d00ff]');
-        btn.classList.add('text-zinc-400');
-      });
-
-      const activeBtn = document.getElementById('nav-' + pageId);
-      if (activeBtn) {
-        activeBtn.classList.add('text-[#0d00ff]', 'border-b-2', 'border-[#0d00ff]');
-        activeBtn.classList.remove('text-zinc-400');
-      }
-
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  </script>
+        // Formulário de Contato sem Alert
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const msgBox = document.getElementById('form-message');
+            msgBox.classList.remove('hidden');
+            
+            // Resetar formulário após 3s
+            setTimeout(() => {
+                e.target.reset();
+            }, 1000);
+        }
+    </script>
 </body>
 </html>
-
-```
