@@ -1,27 +1,52 @@
-// Função para abrir o visualizador de apresentações/marcas diretamente no site
-function openBrandViewer(filePath, title) {
-    const modal = document.getElementById('brand-viewer-modal');
-    const iframe = document.getElementById('brand-viewer-iframe');
-    const titleEl = document.getElementById('brand-viewer-title');
+<!-- FOOTER -->
+    <footer class="bg-black py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            
+            <div class="flex items-center gap-3">
+                <span class="heading-font font-extrabold text-lg text-ilu-blue">LAB ILÛ</span>
+                <span class="text-xs text-ilu-offwhite/40">© 2026 — Memória Ancestral & Inovação Futurista</span>
+            </div>
 
-    if (modal && iframe) {
-        iframe.src = filePath;
-        if (titleEl) titleEl.textContent = title;
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        document.body.style.overflow = 'hidden'; // Impede o scroll de fundo
-    }
-}
+            <div class="sub-font text-xs uppercase tracking-widest text-ilu-offwhite/50 flex gap-6">
+                <a href="index.html" class="hover:text-ilu-blue transition-colors">Casa</a>
+                <a href="ces-sao-fi-de-quem.html" class="hover:text-ilu-blue transition-colors">Cês são fi de quem?</a>
+                <a href="tecnologias.html" class="hover:text-ilu-blue transition-colors">Tecnologias</a>
+                <a href="trabalhos.html" class="hover:text-ilu-blue transition-colors">Trabalhos</a>
+                <a href="fala-tu.html" class="hover:text-ilu-blue transition-colors">Fala tu</a>
+            </div>
 
-// Função para fechar o visualizador
-function closeBrandViewer() {
-    const modal = document.getElementById('brand-viewer-modal');
-    const iframe = document.getElementById('brand-viewer-iframe');
+        </div>
+    </footer>
+    
+    <script src="assets/ilu.js" defer></script>
 
-    if (modal && iframe) {
-        iframe.src = '';
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-        document.body.style.overflow = ''; // Restaura o scroll
-    }
-}
+    <!-- Script do Visualizador de Marcas -->
+    <script>
+        function openBrandViewer(filePath, title) {
+            const modal = document.getElementById('brand-viewer-modal');
+            const iframe = document.getElementById('brand-viewer-iframe');
+            const titleEl = document.getElementById('brand-viewer-title');
+
+            if (modal && iframe) {
+                iframe.src = filePath;
+                if (titleEl) titleEl.textContent = title;
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeBrandViewer() {
+            const modal = document.getElementById('brand-viewer-modal');
+            const iframe = document.getElementById('brand-viewer-iframe');
+
+            if (modal && iframe) {
+                iframe.src = '';
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.style.overflow = '';
+            }
+        }
+    </script>
+</body>
+</html>
